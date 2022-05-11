@@ -5,6 +5,9 @@
 #
 # Starts communication on initializing
 # Wraps commands in properly named methods so you don't have to remember the bytecodes
+#
+# Usage: roomba = irobot_create.Roomba(<port name (usually '/dev/ttyUSB0')>) at start
+#        roomba.close() before exiting
 
 import serial
 import time
