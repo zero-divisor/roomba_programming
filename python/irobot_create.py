@@ -1,5 +1,11 @@
 # Based on code from https://www.servomagazine.com/magazine/article/irobot-create2-raspberry-pi-picreate
 # requires pyserial
+
+# Class for roomba
+#
+# Starts communication on initializing
+# Wraps commands in properly named methods so you don't have to remember the bytecodes
+
 import serial
 import time
 
