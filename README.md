@@ -21,4 +21,7 @@ https://www.raspberrypi.com/documentation/computers/remote-access.html#using-sec
 
 ## Required Python Libraries
 Some of the Python files require additional libraries.  
-todo
+You can install them with: pip install <library_name>
+
+* manual_driving.py requires sshkeyboard
+* irobot_create.py requires pyserial
