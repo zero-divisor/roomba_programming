@@ -20,4 +20,5 @@ Copying files to the Raspberry Pi with scp:
 https://www.raspberrypi.com/documentation/computers/remote-access.html#using-secure-copy
 
 ## Required Python Libraries
+Some of the Python files require additional libraries.  
 todo
