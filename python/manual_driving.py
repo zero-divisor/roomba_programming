@@ -1,3 +1,4 @@
+# requires sshkeyboard
 from sshkeyboard import listen_keyboard, stop_listening
 import time
 import irobot_create
