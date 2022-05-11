@@ -5,31 +5,46 @@ import irobot_create
 
 # Connect to roomba
 roomba = irobot_create.Roomba('/dev/ttyUSB0')
+# driving speed in mm/s
+speed = 150
+brush_status = False
+
+speed = int(input("enter speed in mm/s (number only): "))
+# keep speed in range
+# 20mm/s is the minimum at wicht the roomba still drives
+# 500mm/s is the maximum speed defined by the specs 
+speed = min(speed, 500)
+speed = max(speed, 20)
+print('speed set to: ' + str(speed) + 'mm/s\n')
+
 # Instructions
-print("Benutze Pfeiltasten (<, ^, v, >) um den roomba zu steuern")
-print("c um Bürsten zu Starten")
-print("o um Bürsten zu Stoppen")
-print("q zum Beenden")
+print("Use Arrow keys (<, ^, v, >) to drive")
+print("c to toggle brushes")
+print("q to quit")
 
 def press(key):
+    global speed
+    global brush_status
+
     if key == "left":
-        roomba.set_drive_spin_ccw(200)
+        roomba.set_drive_spin_ccw(speed)
         print('<')
     elif key == "right":
-        roomba.set_drive_spin_cw(200)
+        roomba.set_drive_spin_cw(speed)
         print('>')
     elif key == "up":
-        roomba.set_drive_straight(200)
+        roomba.set_drive_straight(speed)
         print('^')
     elif key == "down":
-        roomba.set_drive_backwards(200)
+        roomba.set_drive_backwards(speed)
         print('v')
     elif key == 'c':
-        roomba.set_cleaning_all()
-        print("Starting Brushes")
-    elif key == 'o':
-        roomba.set_cleaning_off()
-        print("Stoping Brushes")
+        if brush_status:
+            roomba.set_cleaning_off()
+        else:
+            roomba.set_cleaning_all()
+        print("Brushes on") if brush_status else print("Brushes off")
+        brush_status = not brush_status
     elif key == "q":
         print("exiting")
         roomba.set_cleaning_off()
