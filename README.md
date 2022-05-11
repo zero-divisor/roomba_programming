@@ -1,6 +1,7 @@
 Roomba Programming
 ========
 Code and documentation to control roomba 600 Series with a Raspberry Pi.
+
 ## General Guides and Documentation
 Guides for hardware setup:  
 https://www.servomagazine.com/magazine/article/irobot-create2-raspberry-pi-picreate  
@@ -17,3 +18,6 @@ https://www.raspberrypi.com/documentation/computers/remote-access.html#ssh
 
 Copying files to the Raspberry Pi with scp:  
 https://www.raspberrypi.com/documentation/computers/remote-access.html#using-secure-copy
+
+## Required Python Libraries
+todo
