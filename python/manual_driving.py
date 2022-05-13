@@ -34,7 +34,7 @@ def press(key):
     elif key == "s":
         speed = int(input("enter speed in mm/s (number only): "))
         # keep speed in range
-        # 20mm/s is the minimum at wicht the roomba still drives
+        # 20mm/s is the minimum at wich the roomba still drives
         # 500mm/s is the maximum speed defined by the specs 
         speed = min(speed, 500)
         speed = max(speed, 20)
