@@ -9,17 +9,10 @@ roomba = irobot_create.Roomba('/dev/ttyUSB0')
 speed = 150
 brush_status = False
 
-speed = int(input("enter speed in mm/s (number only): "))
-# keep speed in range
-# 20mm/s is the minimum at wicht the roomba still drives
-# 500mm/s is the maximum speed defined by the specs 
-speed = min(speed, 500)
-speed = max(speed, 20)
-print('speed set to: ' + str(speed) + 'mm/s\n')
-
 # Instructions
 print("Use Arrow keys (<, ^, v, >) to drive")
 print("c to toggle brushes")
+print("s to set speed")
 print("q to quit")
 
 def press(key):
@@ -38,13 +31,21 @@ def press(key):
     elif key == "down":
         roomba.set_drive_backwards(speed)
         print('v')
+    elif key == "s":
+        speed = int(input("enter speed in mm/s (number only): "))
+        # keep speed in range
+        # 20mm/s is the minimum at wicht the roomba still drives
+        # 500mm/s is the maximum speed defined by the specs 
+        speed = min(speed, 500)
+        speed = max(speed, 20)
+        print('speed set to: ' + str(speed) + 'mm/s')
     elif key == 'c':
         if brush_status:
             roomba.set_cleaning_off()
         else:
             roomba.set_cleaning_all()
-        print("Brushes on") if brush_status else print("Brushes off")
         brush_status = not brush_status
+        print("Brushes on") if brush_status else print("Brushes off")
     elif key == "q":
         print("exiting")
         roomba.set_cleaning_off()
@@ -58,4 +59,5 @@ def release(key):
 listen_keyboard(
     on_press=press,
     on_release=release,
+    sequential=True,
 )
